@@ -12,9 +12,8 @@
         "command": "alias cfa='npx claude-flow@alpha'" 
     }
   },
-  "postCreateCommand": "npm install -g @anthropic-ai/claude-code && claude doctor",
-  "postStartCommand": "bash -c 'if ! claude doctor >/dev/null 2>&1; then echo \"⚠️  Claude not authenticated. Run \\\"claude login\\\" or set ANTHROPIC_API_KEY.\"; else echo OK; fi'",
-
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
+  "postStartCommand": "bash -lc 'if [ -n \"$ANTHROPIC_API_KEY\" ]; then echo \"Claude key present\"; else echo \"⚠ Set ANTHROPIC_API_KEY or run claude login\"; fi'",
   "customizations": {
     "vscode": {
       "extensions": [
